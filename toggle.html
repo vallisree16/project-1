@@ -1,0 +1,184 @@
+<label class="bulb-toggle">
+  <input type="checkbox">
+  <div class="bulb">💡</div>
+</label>
+
+<style>
+.bulb-toggle input{display:none;}
+
+.bulb{
+  font-size:60px;
+  cursor:pointer;
+  transition:.4s;
+  filter:grayscale(100%);
+}
+
+input:checked + .bulb{
+  filter:none;
+  text-shadow:0 0 20px yellow;
+}
+</style>
+
+
+<label class="cat-toggle">
+  <input type="checkbox">
+  <div class="track">
+    <div class="cat">🐱</div>
+  </div>
+</label>
+
+<style>
+.cat-toggle{
+  display:inline-block;
+}
+.cat-toggle input{display:none;}
+
+.track{
+  width:90px;
+  height:40px;
+  background:#ccc;
+  border-radius:30px;
+  position:relative;
+  cursor:pointer;
+}
+
+.cat{
+  position:absolute;
+  left:5px;
+  top:-10px;
+  font-size:40px;
+  transition:.4s;
+}
+
+input:checked + .track{
+  background:#ffcc00;
+}
+input:checked + .track .cat{
+  left:45px;
+}
+</style>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Teddy Hug Toggle</title>
+
+<style>
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#ffe6f0;
+    font-family:Arial;
+}
+
+/* Toggle container */
+.toggle{
+    text-align:center;
+}
+
+/* Teddy */
+.teddy{
+    position:relative;
+    width:120px;
+    height:120px;
+    background:#c68642;
+    border-radius:50%;
+    margin-bottom:20px;
+    transition:.3s;
+}
+
+/* Eyes */
+.eye{
+    width:12px;
+    height:12px;
+    background:#000;
+    border-radius:50%;
+    position:absolute;
+    top:40px;
+}
+.eye.left{left:35px;}
+.eye.right{right:35px;}
+
+/* Hands */
+.hand{
+    width:45px;
+    height:45px;
+    background:#c68642;
+    border-radius:50%;
+    position:absolute;
+    top:65px;
+    transition:.5s;
+}
+.hand.left{left:-15px;}
+.hand.right{right:-15px;}
+
+/* Hug animation */
+.hug .hand.left{
+    transform:translate(45px,-25px) rotate(20deg);
+}
+.hug .hand.right{
+    transform:translate(-45px,-25px) rotate(-20deg);
+}
+
+/* Switch */
+.switch{
+    width:80px;
+    height:40px;
+    background:#ccc;
+    border-radius:40px;
+    position:relative;
+    cursor:pointer;
+    margin:auto;
+}
+.switch::before{
+    content:"";
+    position:absolute;
+    width:32px;
+    height:32px;
+    background:#fff;
+    border-radius:50%;
+    top:4px;
+    left:4px;
+    transition:.4s;
+}
+
+input{display:none;}
+
+input:checked + .switch{
+    background:#ff6f91;
+}
+input:checked + .switch::before{
+    transform:translateX(40px);
+}
+</style>
+</head>
+
+<body>
+
+<div class="toggle">
+    <div class="teddy" id="teddy">
+        <div class="eye left"></div>
+        <div class="eye right"></div>
+        <div class="hand left"></div>
+        <div class="hand right"></div>
+    </div>
+
+    <label>
+        <input type="checkbox" onclick="hugTeddy()">
+        <div class="switch"></div>
+    </label>
+</div>
+
+<script>
+function hugTeddy(){
+    document.getElementById("teddy").classList.toggle("hug");
+}
+</script>
+
+</body>
+</html>
+
